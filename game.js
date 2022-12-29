@@ -21,7 +21,10 @@ const ticTacToe = () => {
     btn.addEventListener("click", () => {
       let cell = parseInt(btn.getAttribute("data-cell")) - 1;
 
-      if (turn === "" || (turn === "X" && btn.textContent === "") && turnsLeft > 0) {
+      if (
+        turn === "" ||
+        (turn === "X" && btn.textContent === "" && turnsLeft > 0)
+      ) {
         turn = "X";
         btn.textContent = "X";
         gameBoard[cell] = "X";
@@ -37,9 +40,9 @@ const ticTacToe = () => {
 
   function simpleAI() {
     if (turnsLeft > 0) {
-      ranIndex = Math.floor(Math.random() * indexRange);      
-
-      if (gameBoard[ranIndex] === "") {        
+      ranIndex = Math.floor(Math.random() * indexRange);
+       
+      if (gameBoard[ranIndex] === "") {
         gameBoard[ranIndex] = "O";
         updateDisplay();
         checkDraw(gameBoard);
@@ -50,7 +53,6 @@ const ticTacToe = () => {
         simpleAI();
       }
     }
-    
   }
 
   function switchTurn() {
@@ -68,7 +70,7 @@ const ticTacToe = () => {
     hasWon = false;
     itsDraw = false;
     turn = "X";
-    turnsLeft = 8;
+    turnsLeft = 9;
     gameBoard = ["", "", "", "", "", "", "", "", ""];
     updateDisplay();
   };
@@ -85,9 +87,25 @@ const ticTacToe = () => {
       cell[i].textContent = gameBoard[i];
     }
   }
+
+//   function hardMode() {
+//     if (
+//       (gameBoard[0] === "X" && gameBoard[1] === "X") ||
+//       (gameBoard[0] === "X" && gameBoard[2] === "X") ||
+//       (gameBoard[1] === "X" && gameBoard[2] === "X")
+//     ) {
+//       for (let i = 0; i <= 3; i++) {
+//         if (gameBoard[i] === "") {
+//           gameBoard[i] = "O";
+//         }
+//       }
+//     }else{
+//         simpleAI();
+//     }
+//   }
+
   // Disgusting check
   function checkWinner(checkTurn) {
-    
     // Check Rows
     if (
       gameBoard[0] === checkTurn &&
@@ -110,7 +128,7 @@ const ticTacToe = () => {
     ) {
       hasWon = true;
       displayWinner(checkTurn);
-    } 
+    }
 
     // Check Columns
     else if (
@@ -135,7 +153,7 @@ const ticTacToe = () => {
       hasWon = true;
       displayWinner(checkTurn);
     }
-    
+
     // Check diagonals
     else if (
       gameBoard[0] === checkTurn &&
