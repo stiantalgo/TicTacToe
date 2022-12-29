@@ -1,0 +1,69 @@
+:root{
+    background-color: darkcyan;
+    --cellSize: 800px;
+    --boardSize: 1000px;
+}
+
+.container{
+    text-align: center;
+    margin: 0 auto;
+    width: var(--boardSize);
+    height: var(--boardSize);
+    
+}
+
+
+h1{
+    font-size: 60px;
+}
+
+.gameBoard{
+    margin: 60px auto;
+    width: var(--cellSize);
+    height: var(--cellSize);
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 50px;
+
+}
+
+.cells{
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 200px;
+}
+
+.cells:hover{
+    background-color: cadetblue;
+}
+
+.gameScreen{
+
+    position: relative;
+    font-size: 120px;
+    top: -550px;
+    border-radius: 20px;
+    margin: 0 auto;
+    width: 90%;
+    padding: 20px 0 20px 0;
+    background-color: aquamarine;
+}
+
+
+
+.winBtn{
+    position: relative;
+    top: -500px;
+    font-size: 24px;
+    border-radius: 20px;
+    margin: 0 auto;
+    width: 200px;
+    height: 80px;
+    background-color: aquamarine;
+}
+
+.winBtn:hover{
+    background-color: rgb(12, 228, 156);
+}
