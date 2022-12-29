@@ -21,7 +21,7 @@ const ticTacToe = () => {
     btn.addEventListener("click", () => {
       let cell = parseInt(btn.getAttribute("data-cell")) - 1;
 
-      if (turn === "" || (turn === "X" && btn.textContent === "")) {
+      if (turn === "" || (turn === "X" && btn.textContent === "") && turnsLeft > 0) {
         turn = "X";
         btn.textContent = "X";
         gameBoard[cell] = "X";
@@ -37,11 +37,9 @@ const ticTacToe = () => {
 
   function simpleAI() {
     if (turnsLeft > 0) {
-      ranIndex = Math.floor(Math.random() * indexRange);
-      console.log(ranIndex);
+      ranIndex = Math.floor(Math.random() * indexRange);      
 
-      if (gameBoard[ranIndex] === "") {
-        console.log(`Filling up the slot: ${ranIndex}`);
+      if (gameBoard[ranIndex] === "") {        
         gameBoard[ranIndex] = "O";
         updateDisplay();
         checkDraw(gameBoard);
@@ -52,7 +50,7 @@ const ticTacToe = () => {
         simpleAI();
       }
     }
-    console.log(turnsLeft);
+    
   }
 
   function switchTurn() {
@@ -160,7 +158,7 @@ const ticTacToe = () => {
     gameScreen.style.display = "block";
     winBtn.style.display = "block";
     board.style.filter = "blur(10px)";
-
+    turnsLeft = 0;
     if (hasWon) {
       gameScreen.textContent = `${checkTurn} WINS!`;
     }
